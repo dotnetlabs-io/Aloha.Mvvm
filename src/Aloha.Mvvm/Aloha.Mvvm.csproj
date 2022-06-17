@@ -8,7 +8,7 @@
     <Company>DotNetLabs, LLC</Company>
     <Description>A simple prototyping MVVM library for .NET MAUI applications.</Description>
     <Copyright>Copyright (c) 2022 DotNetLabs, LLC</Copyright>
-    <PackageIconUrl>icon.png</PackageIconUrl>
+    <PackageIconl>icon.png</PackageIconl>
     <PackageProjectUrl>https://github.com/dotnetlabs-io/Aloha.Mvvm</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
@@ -24,5 +24,6 @@
     <Folder Include="Input\" />
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
+    <None Include="..\..\media\icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 </Project>

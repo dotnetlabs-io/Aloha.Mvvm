@@ -1,6 +1,6 @@
 # Aloha.Mvvm
 
-<img align="right" src="https://github.com/dotnetlabs-io/Aloha.Mvvm/blob/main/media/icon.png" />
+<img align="right" src="https://raw.githubusercontent.com/dotnetlabs-io/Aloha.Mvvm/main/media/icon.png" />
 
 The purpose of these projects are to simplify the creation simple/prototype/POC .NET [Multi-platform App UI (MAUI)](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/) apps. 
 

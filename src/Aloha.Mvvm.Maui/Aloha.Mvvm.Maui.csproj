@@ -21,7 +21,7 @@
 		<Company>DotNetLabs, LLC</Company>
 		<Description>A simple prototyping MVVM library for .NET MAUI applications.</Description>
 		<Copyright>Copyright (c) 2022 DotNetLabs, LLC</Copyright>
-		<PackageIconUrl>https://github.com/dotnetlabs-io/Aloha.Mvvm/icon.png</PackageIconUrl>
+		<PackageIconUrl>https://github.com/dotnetlabs-io/Aloha.Mvvm/blob/main/media/icon.png</PackageIconUrl>
 		<PackageProjectUrl>https://github.com/dotnetlabs-io/Aloha.Mvvm</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
