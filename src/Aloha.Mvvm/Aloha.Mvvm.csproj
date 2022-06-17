@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageId>Aloha.Mvvm</PackageId>
+    <Version>1.0.0-beta</Version>
+    <Authors>Rob Hedgpeth</Authors>
+    <Company>DotNetLabs, LLC</Company>
+    <Description>A simple prototyping MVVM library for .NET MAUI applications.</Description>
+    <Copyright>Copyright (c) 2022 DotNetLabs, LLC</Copyright>
+    <PackageIconUrl>icon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/dotnetlabs-io/Aloha.Mvvm</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Enumerations\" />
+    <None Remove="Input\" />
+    <None Remove="Services\" />
+    <None Remove="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enumerations\" />
+    <Folder Include="Input\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+</Project>

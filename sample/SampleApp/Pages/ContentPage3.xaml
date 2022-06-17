@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BaseContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Aloha.Mvvm.Maui.Pages;assembly=Aloha.Mvvm.Maui"
+    xmlns:vm="clr-namespace:SampleApp.Core.ViewModels;assembly=SampleApp.Core"
+    x:TypeArguments="vm:ViewModel3"
+    x:Class="SampleApp.Pages.ContentPage3"
+    Title="Page 3">
+    <pages:BaseContentPage.Content>
+        <StackLayout  VerticalOptions="Center" HorizontalOptions="Center">
+            <Button Text="Dismiss Page" Command="{Binding DismissCommand}" />
+            <Button Text="Navigate to Tabbed Page" Command="{Binding NavigationCommand}" />
+        </StackLayout>
+    </pages:BaseContentPage.Content>
+</pages:BaseContentPage>

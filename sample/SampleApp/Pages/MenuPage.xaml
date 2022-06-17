@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<pages:BaseContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SampleApp.Controls;assembly=SampleApp"
+    xmlns:pages="clr-namespace:Aloha.Mvvm.Maui.Pages;assembly=Aloha.Mvvm.Maui"
+    xmlns:vm="clr-namespace:SampleApp.Core.ViewModels;assembly=SampleApp.Core" 
+    x:TypeArguments="vm:MenuViewModel"
+    x:Class="SampleApp.Pages.MenuPage" 
+    Title="Menu">
+    <VerticalStackLayout>
+        <controls:ListView x:Name="MenuItemsListView" 
+                           SeparatorVisibility="None" 
+                           HasUnevenRows="true" 
+                           ItemsSource="{Binding MenuItems}"
+                           ItemTappedCommand="{Binding MenuItemSelectedCommand}">
+            <controls:ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                            <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding .}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </controls:ListView.ItemTemplate>
+        </controls:ListView>
+    </VerticalStackLayout>
+</pages:BaseContentPage>

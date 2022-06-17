@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BaseTabbedPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Aloha.Mvvm.Maui.Pages;assembly=Aloha.Mvvm.Maui"
+    xmlns:vm="clr-namespace:SampleApp.Core.ViewModels;assembly=SampleApp.Core"
+    x:TypeArguments="vm:CollectionViewModel"
+    x:Class="SampleApp.Pages.SampleTabbedPage"
+    Title="Tabbed Page">
+    <pages:BaseTabbedPage.ToolbarItems>
+        <ToolbarItem Text="Switch Tab" Command="{Binding SwitchCommand}" />
+    </pages:BaseTabbedPage.ToolbarItems>
+</pages:BaseTabbedPage>

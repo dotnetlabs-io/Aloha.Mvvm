@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BaseContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Aloha.Mvvm.Maui.Pages;assembly=Aloha.Mvvm.Maui"
+    xmlns:vm="clr-namespace:SampleApp.Core.ViewModels;assembly=SampleApp.Core"
+    x:TypeArguments="vm:ViewModel1"
+    x:Class="SampleApp.Pages.ContentPage1"
+    Title="Page 1">
+    <pages:BaseContentPage.Content>
+           
+        <Button Text="Navigate to Page 3" Command="{Binding NavigationCommand}" VerticalOptions="Center" HorizontalOptions="Center" />
+                
+    </pages:BaseContentPage.Content>
+</pages:BaseContentPage>
