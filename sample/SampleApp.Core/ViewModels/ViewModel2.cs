@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using Aloha.Mvvm.Input;
-using Aloha.Mvvm.Services;
 using Aloha.Mvvm.ViewModels;
 
 namespace SampleApp.Core.ViewModels
@@ -14,7 +13,7 @@ namespace SampleApp.Core.ViewModels
             {
                 if (_navigationCommand == null)
                 {
-                    _navigationCommand = new Command(async () => await Navigation.PushModalAsync(GetViewModel<ViewModel3>()));
+                    _navigationCommand = new Command(async () => await Navigation.PushModalAsync(CreateInstance<ViewModel3>()));
                 }
 
                 return _navigationCommand;

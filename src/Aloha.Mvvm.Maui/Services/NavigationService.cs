@@ -6,16 +6,25 @@ using System.Reflection;
 
 namespace Aloha.Mvvm.Maui.Services
 {
+    /// <summary>
+    /// Interface used to couple View object to a ViewModel
+    /// </summary>
     public interface IViewFor
     {
         object ViewModel { get; set; }
     }
 
+    /// <summary>
+    /// Interface used to couple View object to a ViewModel
+    /// </summary>
     public interface IViewFor<T> : IViewFor where T : BaseViewModel
     {
         new T ViewModel { get; set; }
     }
 
+    /// <summary>
+    /// Service that facilitates ViewModel level navigation
+    /// </summary>
     public class NavigationService : INavigationService
     {
         INavigation MauiNavigation
@@ -25,9 +34,9 @@ namespace Aloha.Mvvm.Maui.Services
                 var tabView = Application.Current.MainPage as TabbedPage;
                 var flyoutView = Application.Current.MainPage as FlyoutPage;
 
-                // First check to see if we're on a tabbed page, then master detail, finally go to overall fallback
+                // First, check to see if we're on a tabbed page, then master detail, finally go to overall fallback
                 return tabView?.CurrentPage?.Navigation ??
-                                     (flyoutView?.Detail as TabbedPage)?.CurrentPage?.Navigation ?? // special consideration for a tabbed page inside master/detail
+                                     (flyoutView?.Detail as TabbedPage)?.CurrentPage?.Navigation ?? // Special consideration for a tabbed page inside master/detail
                                      flyoutView?.Detail?.Navigation ??
                                      Application.Current.MainPage.Navigation;
             }
@@ -38,6 +47,10 @@ namespace Aloha.Mvvm.Maui.Services
 
         #region Registration
 
+        /// <summary>
+        /// Automatically register all View and ViewModel relationships for lookup within the NavigationService
+        /// </summary>
+        /// <param name="asm">An assembly that contains views that implement the IViewFor interface</param>
         public void AutoRegister(Assembly asm)
         {
             // Loop through everything in the assembly that implements IViewFor<T>
@@ -54,6 +67,9 @@ namespace Aloha.Mvvm.Maui.Services
             }
         }
 
+        /// <summary>
+        /// Register a View / ViewModel relationship
+        /// </summary>
         public void Register(Type viewModelType, Type viewType)
         {
             if (!_viewModelViewDictionary.ContainsKey(viewModelType))
@@ -89,6 +105,9 @@ namespace Aloha.Mvvm.Maui.Services
             }
         }
 
+        /// <summary>
+        /// Set the Detail page of a FlyoutPage 
+        /// </summary>
         public async Task SetDetailAsync(BaseViewModel viewModel, bool allowSamePageSet = false)
         {
             if (DetailPage != null)
@@ -138,11 +157,17 @@ namespace Aloha.Mvvm.Maui.Services
             DetailPage = newDetailPage;
         }
 
+        /// <summary>
+        /// Set the Application.Current.MainPage 
+        /// </summary>
         public void SetRoot<T>(bool withNavigationEnabled = true) where T : BaseViewModel
         {
             SetRoot(Activator.CreateInstance<T>(), withNavigationEnabled);
         }
 
+        /// <summary>
+        /// Set the Application.Current.MainPage 
+        /// </summary>
         public void SetRoot(BaseViewModel viewModel, bool withNavigationEnabled = true)
         {
             if (InstantiateView(viewModel) is Page view)
@@ -162,21 +187,33 @@ namespace Aloha.Mvvm.Maui.Services
 
         #region Pop
 
+        /// <summary>
+        /// Pop the top view off the navigation stack
+        /// </summary>
         public Task PopAsync(bool animated = true) => MauiNavigation.PopAsync(animated);
 
+        /// <summary>
+        /// Pop the top view off the modal navigation stack
+        /// </summary>
         public Task PopModalAsync(bool animated = true) => MauiNavigation.PopModalAsync(animated);
 
+        /// <summary>
+        /// Pop all the views, above the root, off the navigation stack 
+        /// </summary>
         public Task PopToRootAsync(bool animated = true) => MauiNavigation.PopToRootAsync(animated);
 
         #endregion
 
         #region Push
 
-        public Task PushAsync<T>(bool animated = true) where T : BaseViewModel
-        {
-            return PushAsync(ServiceContainer.Resolve<T>(), animated);
-        }
+        /// <summary>
+        /// Push a View, by resolving via ViewModel (T) generic, onto the navigation stack
+        /// </summary>
+        public Task PushAsync<T>(bool animated = true) where T : BaseViewModel => PushAsync(ServiceContainer.Resolve<T>(), animated);
 
+        /// <summary>
+        /// Push a View, by resolving via ViewModel object, onto the navigation stack
+        /// </summary>
         public Task PushAsync(BaseViewModel viewModel, bool animated) => MauiNavigation.PushAsync((Page)InstantiateView(viewModel), animated);
 
         public Task PushModalAsync<T>(bool nestedNavigation = false, bool animated = true) where T : BaseViewModel
@@ -184,6 +221,10 @@ namespace Aloha.Mvvm.Maui.Services
             return PushModalAsync(ServiceContainer.Resolve<T>(), nestedNavigation, animated);
         }
 
+
+        /// <summary>
+        /// Push a View, by resolving via ViewModel object, onto the navigation stack
+        /// </summary>
         public Task PushModalAsync(BaseViewModel viewModel, bool nestedNavigation = false, bool animated = true)
         {
             viewModel.ViewDisplay = ViewDisplayType.Modal;
@@ -206,6 +247,7 @@ namespace Aloha.Mvvm.Maui.Services
 
         #endregion
 
+        // Instantiate a View  object using a ViewModel object
         IViewFor InstantiateView(BaseViewModel viewModel)
         {
             // Figure out what type the view model is
@@ -270,7 +312,7 @@ namespace Aloha.Mvvm.Maui.Services
                     }
                     else
                     {
-                        throw new InvalidOperationException("Master page must derive from BaseContentPage.");
+                        throw new InvalidOperationException("Flyout page must derive from BaseContentPage.");
                     }
                 }
             }

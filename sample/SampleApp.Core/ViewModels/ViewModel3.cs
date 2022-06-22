@@ -29,7 +29,7 @@ namespace SampleApp.Core.ViewModels
             {
                 if (_navigationCommand == null)
                 {
-                    _navigationCommand = new Command(async () => await Navigation.PushAsync(GetViewModel<CollectionViewModel>()));
+                    _navigationCommand = new Command(async () => await Navigation.PushAsync(CreateInstance<CollectionViewModel>()));
                 }
 
                 return _navigationCommand;

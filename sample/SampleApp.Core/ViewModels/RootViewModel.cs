@@ -6,11 +6,11 @@ namespace SampleApp.Core.ViewModels
     {
         public RootViewModel() : base() 
         { 
-            var menuViewModel = GetViewModel<MenuViewModel>();
+            var menuViewModel = CreateInstance<MenuViewModel>();
             menuViewModel.MenuItemSelected = MenuItemSelected;
 
             Flyout = menuViewModel;
-            Detail = GetViewModel<CollectionViewModel>();
+            Detail = CreateInstance<CollectionViewModel>();
         }
 
         void MenuItemSelected(BaseViewModel viewModel) => SetDetail(viewModel);

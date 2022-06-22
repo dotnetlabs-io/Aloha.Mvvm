@@ -17,10 +17,7 @@ namespace Aloha.Mvvm.ViewModels
 
         public virtual Task InitAsync() => Task.FromResult(true);
 
-        protected static T GetViewModel<T>() where T : BaseViewModel
-        {
-            return Activator.CreateInstance<T>();
-        }
+        protected static T CreateInstance<T>() where T : BaseViewModel => Activator.CreateInstance<T>();
     }
 }
 

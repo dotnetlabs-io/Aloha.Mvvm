@@ -46,16 +46,16 @@ namespace SampleApp.Core.ViewModels
             switch (item)
             {
                 case "Tabbed Page":
-                    viewModel = GetViewModel<CollectionViewModel>();
+                    viewModel = CreateInstance<CollectionViewModel>();
                     break;
                 case "Page 1":
-                    viewModel = GetViewModel<ViewModel1>();
+                    viewModel = CreateInstance<ViewModel1>();
                     break;
                 case "Page 2":
-                    viewModel = GetViewModel<ViewModel2>();
+                    viewModel = CreateInstance<ViewModel2>();
                     break;
                 case "Page 3":
-                    viewModel = GetViewModel<ViewModel3>();
+                    viewModel = CreateInstance<ViewModel3>();
                     break;
             }
 

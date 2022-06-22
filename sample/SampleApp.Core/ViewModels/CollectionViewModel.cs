@@ -20,10 +20,10 @@ namespace SampleApp.Core.ViewModels
             }
         }
 
-        public CollectionViewModel() //: base(false)
+        public CollectionViewModel()
         {
-            ViewModels.Add(GetViewModel<ViewModel1>());
-            ViewModels.Add(GetViewModel<ViewModel2>());
+            ViewModels.Add(CreateInstance<ViewModel1>());
+            ViewModels.Add(CreateInstance<ViewModel2>());
         }
 
         void SwitchSelected()
