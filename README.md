@@ -238,7 +238,7 @@ public class RootViewModel : BaseFlyoutViewModel
 
 Addition properties available: 
 
-* Master (`BaseViewModel`)
+* Flyout (`BaseViewModel`)
 * Detail (`BaseViewModel`)
 
 Additional methods available:
